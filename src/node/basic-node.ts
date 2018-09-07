@@ -1,3 +1,5 @@
+import { INodeOptions, INode, NodeType, NodeContent } from "@src/index";
+
 'use strict';
 
 /**
@@ -7,8 +9,14 @@
  * @param {number} column
  * @constructor
  */
-class Node {
-    constructor(options) {
+export default class Node implements INode {
+  public readonly type: NodeType;
+  public readonly syntax: string;
+  public readonly start?: number | undefined;
+  public readonly end?: number | undefined;
+  public content: NodeContent;
+
+    constructor(options: INodeOptions) {
       this.type = options.type;
       this.content = options.content;
       this.syntax = options.syntax;
@@ -227,4 +235,3 @@ class Node {
 
 }
 
-module.exports = Node;
